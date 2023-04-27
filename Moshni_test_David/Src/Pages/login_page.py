@@ -19,8 +19,8 @@ class LoginPage(BasePage):
     url = data.get("url")
 
     def login(self, username, password):
-        self.username = username
-        self.password = password
+        self.username = self.data.get(username)
+        self.password = self.data.get(password)
         username_locator = (By.NAME, loginLocators.textbox_username_name)
         password_locator = (By.NAME, loginLocators.textbox_password_name)
         login_btn_locator = (By.XPATH, loginLocators.btn_login_xpath)
