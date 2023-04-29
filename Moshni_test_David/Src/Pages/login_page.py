@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 import json, os
-
+import time
 
 class LoginPage(BasePage):
 
@@ -26,7 +26,9 @@ class LoginPage(BasePage):
         login_btn_locator = (By.XPATH, loginLocators.btn_login_xpath)
 
         self.send_keys(username_locator, self.username)
+        time.sleep(5)
         self.send_keys(password_locator, self.password)
+        time.sleep(5)
         self.click_element(login_btn_locator)
 
 

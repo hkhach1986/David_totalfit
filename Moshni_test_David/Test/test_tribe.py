@@ -1,25 +1,30 @@
 import pytest
+import time 
 
 from Src.Pages.tribe_page import TribePage
 
-
+@pytest.mark.parametrize("login", ["positive"], indirect=True)
 class Test_Tribe(TribePage):
     
-    @pytest.fixture(autouse=True)
-    def setup_browser (self, setup):
+    tribe_name = "Tribe_Yerevan_Komitas22"
+    def test_create_tribe(self, setup, login):
         self.driver = setup
-        self.driver.get(self.url)
+        self.create_new_tribe(self.tribe_name)
+        assert self.check_tribe(self.tribe_name)
 
-
-    def test_create_tribe(self):
-        tribe_name = "Tribe_Yerevan_Komitas"
-        self.create_new_tribe(tribe_name)
-        assert self.check_created_tribe(tribe_name)
-
-    def test_invite_member(self):
-        assert self.view_tribe()
+    
+    def test_invite_member(self, setup, login):
+        self.driver = setup
+        assert self.view_tribe(self.tribe_name)
         assert self.invite_tribe()
 
-    def test_delete_tribe(self):
-        self.delete_tribe()
+    
+    def test_delete_tribe(self, setup, login):
+        self.driver = setup
+        self.driver.back() # navigate back to the previous page
+        time.sleep(5)
+        self.driver.back()
+        time.sleep(5)
+        self.delete_tribe(self.tribe_name)
+        assert not self.check_tribe(self.tribe_name)
 

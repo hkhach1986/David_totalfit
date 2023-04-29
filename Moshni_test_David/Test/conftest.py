@@ -19,15 +19,12 @@ def setup(request):
 
 
 @pytest.fixture(scope="class")
-def login(setup, request, username = "username", password = "password"):
+def login(setup, request):
     driver = setup
     login_page = LoginPage()
     login_page.driver = driver
     driver.get(login_page.url)
-    if request.node.get_closest_marker("negative") is not None:
-        print("Calling negative!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        exit()
+    if request.param == "negative":
         login_page.login("false_username", "false_password")
     else:
-        print("CALLING POSITIVE!!!!!!!!!!!!!!!!!!")
-        login_page.login(username, password)
+        login_page.login("username", "password")
