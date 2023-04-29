@@ -28,3 +28,4 @@ class Test_Tribe(TribePage):
         self.delete_tribe(self.tribe_name)
         assert not self.check_tribe(self.tribe_name)
 
+barev
