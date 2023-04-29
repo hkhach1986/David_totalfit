@@ -22,7 +22,7 @@ class BasePage:
     
     def is_text_visible(self, by_locator, text, timeout=10):
         by_locator = (by_locator[0], by_locator[1] + f"[text()=' {text} ']")
-        return self.is_element_text_visible(by_locator).text
+        return self.is_element_visible(by_locator).text
 
     def get_element(self, by_locator, timeout=10, status=True):
         if self.is_element_visible(by_locator) and status == True:
