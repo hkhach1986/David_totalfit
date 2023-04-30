@@ -39,9 +39,9 @@ class TribePage(LoginPage):
         tribe_page_name = tribeLocators.tribe_page_name.replace('tribe name', tribe_name)
         tribe_page_name_loc = (By.XPATH, tribe_page_name)
         self.click_element(more_horiz_loc)
-        sleep(5)
+        sleep(3)
         self.click_element(view_tribe_loc)
-        sleep(5)
+        sleep(3)
         return self.is_element_visible(tribe_page_name_loc)
 
     def invite_tribe(self):
@@ -49,15 +49,27 @@ class TribePage(LoginPage):
         tribe_members_page_loc = (By.XPATH, tribeLocators.tribe_members_page)
         self.click_element(invite_tribe_member_loc)
         return self.is_element_visible(tribe_members_page_loc)
+    
+    def completed_workouts(self):
+        tribe_completed_workouts_btn_loc = (By.XPATH, tribeLocators.tribe_completed_workouts_btn)
+        tribe_completed_workouts_page_loc = (By.XPATH, tribeLocators.tribe_completed_workouts_page)
+        self.click_element(tribe_completed_workouts_btn_loc)
+        return self.is_element_visible(tribe_completed_workouts_page_loc)
+
+    def waiting_for_reaction(self):
+        tribe_waiting_for_reaction_btn_loc = (By.XPATH, tribeLocators.tribe_witing_for_reaction_btn)
+        tribe_waiting_for_reaction_page_loc = (By.XPATH, tribeLocators.tribe_witing_for_reaction_page)
+        self.click_element(tribe_waiting_for_reaction_btn_loc)
+        return self.is_element_visible(tribe_waiting_for_reaction_page_loc)
 
     def delete_tribe(self, tribe_name):
         more_horiz_btn = tribeLocators.more_horiz_btn.replace('tribe name', tribe_name)
         more_horiz_loc = (By.XPATH, more_horiz_btn)
         delete_tribe_loc = (By.XPATH, tribeLocators.tribe_delete_btn)
         self.click_element(more_horiz_loc)
-        sleep(5)
+        sleep(2)
         self.click_element(delete_tribe_loc)
-        sleep(5)
+        sleep(2)
         self.click_element(delete_tribe_loc)
-        sleep(5)
+        sleep(2)
     

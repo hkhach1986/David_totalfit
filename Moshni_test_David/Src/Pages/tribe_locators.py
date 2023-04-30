@@ -10,4 +10,9 @@ class tribeLocators:
     tribe_members_invite = "//*[contains(text(),'INVITE')]"
     tribe_page_name = "//*[contains(text(),'tribe name')]"
     tribe_members_page = "//*[contains(text(),' Tribe Members ')]"
+    tribe_completed_workouts_btn = "//*[contains(text(),' Completed workouts ')]"
+    tribe_witing_for_reaction_btn = "//*[contains(text(),' Waiting for reaction ')]"
+    tribe_completed_workouts_page = "//div[@class='actions-header']//h2[contains(text(),' Completed workouts ')]"
+    tribe_witing_for_reaction_page = "//main[@id='main-container']//h2[contains(text(),' Waiting for reaction ')]"
+
 

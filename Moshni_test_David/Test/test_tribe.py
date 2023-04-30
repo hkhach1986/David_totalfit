@@ -18,6 +18,24 @@ class Test_Tribe(TribePage):
         assert self.view_tribe(self.tribe_name)
         assert self.invite_tribe()
 
+    def test_compleate_workouts(self, setup, login):
+        self.driver = setup
+        self.driver.back() # navigate back to the previous page
+        time.sleep(3)
+        self.driver.back()
+        time.sleep(2)
+        assert self.view_tribe(self.tribe_name)
+        assert self.completed_workouts()
+
+    def test_waiting_for_reaction(self, setup, login):
+        self.driver = setup
+        self.driver.back() # navigate back to the previous page
+        time.sleep(3)
+        self.driver.back()
+        time.sleep(2)
+        assert self.view_tribe(self.tribe_name)
+        assert self.waiting_for_reaction()
+
     
     def test_delete_tribe(self, setup, login):
         self.driver = setup
@@ -27,5 +45,3 @@ class Test_Tribe(TribePage):
         time.sleep(5)
         self.delete_tribe(self.tribe_name)
         assert not self.check_tribe(self.tribe_name)
-
-barev
